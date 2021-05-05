@@ -21,6 +21,8 @@ This repository contains:
 
 
 - Code to reproduce results on simulated data for the corresponding paper.
-
-
-
+	- First execute the file `reproduce.m`. 
+	This will create a number of CSV files in the two sub-directories `afSims/` and `mcSims/`
+	for simulation experiments on adaptive forgetting and model combination, respectively.
+	
+	- To create the actual figures use `Rscript figures.R` 
