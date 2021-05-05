@@ -1,4 +1,18 @@
 function [y_pred, w, lgL] = opp(y, Ypred, Fpred)
+%Optimal Prediction Pool (OPP)
+% [Y_PRED, W, LGL] = OPP(Y, YPRED, FPRED)
+%
+% Implementation of Optimal Prediction Pool of Hall and Mitchell (2007) and Geweke and Amisano (2011)
+%
+% Inputs:
+%	Y: Observed time series
+%	YPRED: Point forecast by each model
+%	FPRED: Handler to density function by each model
+%
+% Outputs:
+%	Y_PRED: Aggregate/ Combined point forecast
+%	W: Combination weights
+%	LGL: Log-likelihood of observed y at each time-step
 
 [T, N] = size(Fpred);
 assert(T == length(y));
@@ -23,7 +37,7 @@ for t=2:T,
 		zeros(1,N),ones(1,N),[],options);
 
 	if flag < 0,
-		fprintf('HMweights: failed to identify minimiser\n');
+		fprintf('OPP: failed to identify minimiser\n');
 		%keyboard;
 	end
 	w(t,:) = x;
