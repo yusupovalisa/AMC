@@ -172,7 +172,7 @@ for t = 2:T
 	% Update state covariance matrix P_t: Eq. (6) in DMA-AF.pdf
 	C = R_mat - k_t * k_t'*yvar; 
 
-	% Update forgetting factor: lambda 
+	% Update forgetting factor: lambda through ADAM algorithm
 	m = b1*m + (1-b1)*dedl(t);
 	v = b2*v + (1-b2)*dedl(t)^2;
 	if t > 1 & a>0,
