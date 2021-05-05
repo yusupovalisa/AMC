@@ -100,26 +100,26 @@ writetable(Tb,'afSims/AFDLM_sim_static.csv');
 
 %%%%%%%%%%%% MODEL COMBINATION SIMULATIONS
 addpath('mcSims/')
-%% Persistence
-%iRep = 100;
-%T = 300;
-%Weights = zeros(T, iRep);
-%
-%Vnames = {'phi','time', 'medW1', 'q1W1', 'q3W1', 'medW2','q1W2','q3W3', 'medW3','q1W3','q3W2'};
-%Tb = table([],[],[],[],[],[],[],[],[],[],[], 'VariableNames', Vnames);
-%writetable(Tb, 'mcSims/ConfHedge_persistence.csv');
-%rng(Seed);
-%for phi=[0.01:0.01:0.99],
-%	for r = 1:iRep,
-%		[y, Ypred] = persistence(T, phi);
-%		[y_v, Weights(:,r:iRep:3*iRep)] = ConfHedge(y, Ypred);
-%	end
-%	results = [phi*ones(T,1), [1:T]', quantile(Weights(:,1:iRep),[0.5,0.25,0.75],2), ...
-%		quantile(Weights(:,(iRep+1):2*iRep),[0.5,0.25,0.75],2), ...
-%		quantile(Weights(:,(2*iRep+1):3*iRep),[0.5,0.25,0.75],2)];
-%	Tb = array2table(results, 'VariableNames', Vnames);
-%	writetable(Tb, 'mcSims/ConfHedge_persistence.csv', 'WriteMode','Append');
-%end
+%% Persistence (this will take longer than previous experiments)
+iRep = 100;
+T = 300;
+Weights = zeros(T, iRep);
+
+Vnames = {'phi','time', 'medW1', 'q1W1', 'q3W1', 'medW2','q1W2','q3W3', 'medW3','q1W3','q3W2'};
+Tb = table([],[],[],[],[],[],[],[],[],[],[], 'VariableNames', Vnames);
+writetable(Tb, 'mcSims/ConfHedge_persistence.csv');
+rng(Seed);
+for phi=[0.01:0.01:0.99],
+	for r = 1:iRep,
+		[y, Ypred] = persistence(T, phi);
+		[y_v, Weights(:,r:iRep:3*iRep)] = ConfHedge(y, Ypred);
+	end
+	results = [phi*ones(T,1), [1:T]', quantile(Weights(:,1:iRep),[0.5,0.25,0.75],2), ...
+		quantile(Weights(:,(iRep+1):2*iRep),[0.5,0.25,0.75],2), ...
+		quantile(Weights(:,(2*iRep+1):3*iRep),[0.5,0.25,0.75],2)];
+	Tb = array2table(results, 'VariableNames', Vnames);
+	writetable(Tb, 'mcSims/ConfHedge_persistence.csv', 'WriteMode','Append');
+end
 
 % Model combination under abrupt change:
 Vnames = {'alg', 'time', 'error', 'w1', 'q1w1','q3w1', 'w2','q1w2','q3w2','w3','q1w3','q3w3'};
