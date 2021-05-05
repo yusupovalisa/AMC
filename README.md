@@ -6,7 +6,7 @@ Author: [Alisa Yusupova](http://www.lancaster.ac.uk/lums/people/alisa-yusupova)<
 Date:     2021-05-05
 
 
-#### About
+### About
 
 This repository contains: 
 
@@ -26,3 +26,7 @@ This repository contains:
 	for simulation experiments on adaptive forgetting and model combination, respectively.
 	
 	- To create the actual figures use `Rscript figures.R` 
+
+### License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
