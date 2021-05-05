@@ -12,11 +12,9 @@ This repository contains:
 
 - An implementation of the two main elements of the Adaptive Model Combination (AMC) method: 
 
-	- `afdlm.m`  
-	Dynamic linear model with adaptive forgetting (discounting) factor.
+	- `afdlm.m` Dynamic linear model with adaptive forgetting (discounting) factor.
 
-	- `ConfHedge.m`
-	The fixed share version of the ConfHedge algorithm:
+	- `ConfHedge.m` The fixed share version of the ConfHedge algorithm:
 	  V. V'yugin and V. Trunov. 
 	  [Online aggregation of unbounded losses using shifting experts with confidence](https://doi.org/10.1007/s10994-018-5751-z). 
 	  *Machine Learning* (108), 425-444 (2019). 
